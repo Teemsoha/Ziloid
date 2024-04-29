@@ -96,7 +96,7 @@ async def chat_blacklist(event):
 
 
 @zedub.zed_cmd(
-    pattern="رفع مطور(?:\s|$)([\s\S]*)",
+    pattern="رفع مطور(?:\\s|$)([\\s\\S]*)",
     command=("رفع مطور", plugin_category),
     info={
         "header": "لـ رفـع مطـورين فـي بـوتك",
@@ -143,7 +143,7 @@ async def add_sudo_user(event):
 
 
 @zedub.zed_cmd(
-    pattern="تنزيل مطور(?:\s|$)([\s\S]*)",
+    pattern="تنزيل مطور(?:\\s|$)([\\s\\S]*)",
     command=("تنزيل مطور", plugin_category),
     info={
         "header": "لـ تنزيـل مطـور مـن بـوتك",
@@ -209,7 +209,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="تحكم(s)?(?:\s|$)([\s\S]*)",
+    pattern="تحكم(s)?(?:\\s|$)([\\s\\S]*)",
     command=("تحكم", plugin_category),
     info={
         "header": "To enable cmds for sudo users.",
@@ -301,7 +301,7 @@ async def _(event):  # sourcery no-metrics
 
 
 @zedub.zed_cmd(
-    pattern="ايقاف تحكم(s)?(?:\s|$)([\s\S]*)?",
+    pattern="ايقاف تحكم(s)?(?:\\s|$)([\\s\\S]*)?",
     command=("ايقاف تحكم", plugin_category),
     info={
         "header": "To disable given cmds for sudo.",
