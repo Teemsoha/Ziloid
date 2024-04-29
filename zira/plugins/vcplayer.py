@@ -45,7 +45,7 @@ ALLOWED_USERS = set()
 
 
 @zedub.zed_cmd(
-    pattern="انضمام ?(\S+)? ?(?:ك)? ?(\S+)?",
+    pattern="انضمام ?(\\S+)? ?(?:ك)? ?(\\S+)?",
     command=("انضمام", plugin_category),
     info={
         "header": "لـ الانضمـام الى المحـادثه الصـوتيـه",
@@ -153,7 +153,7 @@ async def get_playlist(event):
 
 
 @zedub.zed_cmd(
-    pattern="فيد ?(1)? ?([\S ]*)?",
+    pattern="فيد ?(1)? ?([\\S ]*)?",
     command=("فيد", plugin_category),
     info={
         "header": "تشغيـل مقـاطع الفيـديـو في المكـالمـات",
@@ -199,7 +199,7 @@ async def play_video(event):
 
 
 @zedub.zed_cmd(
-    pattern="شغل ?(1)? ?([\S ]*)?",
+    pattern="شغل ?(1)? ?([\\S ]*)?",
     command=("شغل", plugin_category),
     info={
         "header": "تشغيـل المقـاطع الصـوتيـه في المكـالمـات",
@@ -292,104 +292,6 @@ async def skip_stream(event):
     await edit_delete(event, res, time=30)
 
 
-"""
-@zedub.zed_cmd(
-    pattern="a(?:llow)?vc ?([\d ]*)?",
-    command=("allowvc", plugin_category),
-    info={
-        "header": "To allow a user to control VC.",
-        "الوصـف": "To allow a user to controll VC.",
-        "الاستخـدام": [
-            "{tr}allowvc",
-            "{tr}allowvc (user id)",
-        ],
-    },
-)
-async def allowvc(event):
-    "To allow a user to controll VC."
-    user_id = event.pattern_match.group(1)
-    if user_id:
-        user_id = user_id.split(" ")
-    if not user_id and event.reply_to_msg_id:
-        reply = await event.get_reply_message()
-        user_id = [reply.from_id]
-    if not user_id:
-        return await edit_delete(event, "Whom should i Add")
-    ALLOWED_USERS.update(user_id)
-    return await edit_delete(event, "Added User to Allowed List")
-
-
-@zedub.zed_cmd(
-    pattern="d(?:isallow)?vc ?([\d ]*)?",
-    command=("disallowvc", plugin_category),
-    info={
-        "header": "To disallowvc a user to control VC.",
-        "الوصـف": "To disallowvc a user to controll VC.",
-        "الاستخـدام": [
-            "{tr}disallowvc",
-            "{tr}disallowvc (user id)",
-        ],
-    },
-)
-async def disallowvc(event):
-    "To allow a user to controll VC."
-    user_id = event.pattern_match.group(1)
-    if user_id:
-        user_id = user_id.split(" ")
-    if not user_id and event.reply_to_msg_id:
-        reply = await event.get_reply_message()
-        user_id = [reply.from_id]
-    if not user_id:
-        return await edit_delete(event, "Whom should i remove")
-    ALLOWED_USERS.difference_update(user_id)
-    return await edit_delete(event, "Removed User to Allowed List")
-
-
-@zedub.on(
-    events.NewMessage(outgoing=True, pattern=f"{tr}(speak|sp)(h|j)?(?:\s|$)([\s\S]*)")
-)  #only for zedub client
-async def speak(event):
-    "Speak in vc"
-    r = event.pattern_match.group(2)
-    input_str = event.pattern_match.group(3)
-    re = await event.get_reply_message()
-    if ";" in input_str:
-        lan, text = input_str.split(";")
-    else:
-        if input_str:
-            text = input_str
-        elif re and re.text and not input_str:
-            text = re.message
-        else:
-            return await event.delete()
-        if r == "h":
-            lan = "hi"
-        elif r == "j":
-            lan = "ja"
-        else:
-            lan = "en"
-    text = deEmojify(text.strip())
-    lan = lan.strip()
-    if not os.path.isdir("./temp/"):
-        os.makedirs("./temp/")
-    file = "./temp/" + "voice.ogg"
-    try:
-        tts = gTTS(text, lang=lan)
-        tts.save(file)
-        cmd = [
-            "ffmpeg",
-            "-i",
-            file,
-            "-map",
-            "0:a",
-            "-codec:a",
-            "libopus",
-            "-b:a",
-            "100k",
-            "-vbr",
-            "on",
-            file + ".opus",
-        ]
         try:
             t_response = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
         except (subprocess.CalledProcessError, NameError, FileNotFoundError) as exc:
@@ -402,4 +304,4 @@ async def speak(event):
         os.remove(file)
     except Exception as e:
          await edit_or_reply(event, f"**Error:**\n`{e}`")
-"""
+
