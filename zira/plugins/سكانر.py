@@ -179,7 +179,7 @@ async def parse_ocr_space_api(event):
 
 
 @zedub.zed_cmd(
-    pattern="(|ا)سكانر(?:\s|$)([\s\S]*)",
+    pattern="(|ا)سكانر(?:\\s|$)([\\s\\S]*)",
     command=("ocr", plugin_category),
     info={
         "header": "To read text in image/gif/sticker/video and print it.",
