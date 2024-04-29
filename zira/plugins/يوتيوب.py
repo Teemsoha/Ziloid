@@ -80,7 +80,7 @@ video_opts = {
 }
 
 @zedub.zed_cmd(
-    pattern="صوتيه(320)?(?:\s|$)([\s\S]*)",
+    pattern="صوتيه(320)?(?:\\s|$)([\\s\\S]*)",
     command=("بحث", plugin_category),
     info={
         "header": "لـ تحميـل الاغـانـي مـن يـوتيـوب",
@@ -161,7 +161,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="فيديو(?:\s|$)([\s\S]*)",
+    pattern="فيديو(?:\\s|$)([\\s\\S]*)",
     command=("فيديو", plugin_category),
     info={
         "header": "لـ تحميـل مقـاطـع الفيـديـو مـن يـوتيـوب",
@@ -238,7 +238,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="ابحث(?:\ع|$)([\s\S]*)",
+    pattern="ابحث(?:\\ع|$)([\\s\\S]*)",
     command=("ابحث", plugin_category),
     info={
         "header": "To reverse search song.",
@@ -317,7 +317,7 @@ async def shazamcmd(event):
 
 
 # Code by T.me/zzzzl1l
-@zedub.zed_cmd(pattern=".ff(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern=".ff(?:\\s|$)([\\s\\S]*)")
 async def zelzal_song(event):
     song = event.pattern_match.group(1)
     chat = "@ROOTMusic_bot"
@@ -349,7 +349,7 @@ async def zelzal_song(event):
 
 
 @zedub.zed_cmd(
-    pattern="يوتيوب(?: |$)(\d*)? ?([\s\S]*)",
+    pattern="يوتيوب(?: |$)(\\d*)? ?([\\s\\S]*)",
     command=("يوتيوب", plugin_category),
     info={
         "header": "لـ البحـث عـن روابــط بالكلمــه المحــدده علـى يـوتيــوب",
@@ -470,157 +470,4 @@ async def fix_attributes(
     )
     return new_attributes, mime_type
 
-"""
-@zedub.zed_cmd(
-    pattern="تحميل صوت(?:\s|$)([\s\S]*)",
-    command=("تحميل صوت", plugin_category),
-    info={
-        "header": "تحميـل الاغـاني مـن يوتيوب .. فيسبوك .. انستا .. الـخ عـبر الرابـط",
-        "مثــال": ["{tr}تحميل صوت بالــرد ع رابــط", "{tr}تحميل صوت + رابــط"],
-    },
-)
-async def download_audio(event):
-    msg = event.pattern_match.group(1)
-    rmsg = await event.get_reply_message()
-    if not msg and rmsg:
-        msg = rmsg.text
-    urls = extractor.find_urls(msg)
-    if not urls:
-        return await edit_or_reply(event, "**- قـم بادخــال رابـط مع الامـر او بالــرد ع رابـط ليتـم التحميـل**")
-    zedevent = await edit_or_reply(event, "**⌔╎جـارِ التحميل انتظر قليلا ▬▭ ...**")
-    reply_to_id = await reply_id(event)
-    for url in urls:
-        try:
-            vid_data = YoutubeDL({"no-playlist": True}).extract_info(
-                url, download=False
-            )
-        except ExtractorError:
-            vid_data = {"title": url, "uploader": "Catuserbot", "formats": []}
-        startTime = time()
-        retcode = await _mp3Dl(url=url, starttime=startTime, uid="320")
-        if retcode != 0:
-            return await event.edit(str(retcode))
-        _fpath = ""
-        thumb_pic = None
-        for _path in glob.glob(os.path.join(Config.TEMP_DIR, str(startTime), "*")):
-            if _path.lower().endswith((".jpg", ".png", ".webp")):
-                thumb_pic = _path
-            else:
-                _fpath = _path
-        if not _fpath:
-            return await edit_delete(zedevent, "__Unable to upload file__")
-        await zedevent.edit(
-            f"**╮ ❐ جـارِ التحضيـر للـرفع انتظـر ...𓅫╰**:\
-            \n**{vid_data['title']}***"
-        )
-        attributes, mime_type = get_attributes(str(_fpath))
-        ul = io.open(pathlib.Path(_fpath), "rb")
-        if thumb_pic is None:
-            thumb_pic = str(
-                await pool.run_in_thread(download)(
-                    await get_ytthumb(get_yt_video_id(url))
-                )
-            )
-        uploaded = await event.client.fast_upload_file(
-            file=ul,
-            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(
-                    d,
-                    t,
-                    zedevent,
-                    startTime,
-                    "trying to upload",
-                    file_name=os.path.basename(pathlib.Path(_fpath)),
-                )
-            ),
-        )
-        ul.close()
-        media = types.InputMediaUploadedDocument(
-            file=uploaded,
-            mime_type=mime_type,
-            attributes=attributes,
-            force_file=False,
-            thumb=await event.client.upload_file(thumb_pic) if thumb_pic else None,
-        )
-        await event.client.send_file(
-            event.chat_id,
-            file=media,
-            caption=f"<b>File Name : </b><code>{vid_data.get('title', os.path.basename(pathlib.Path(_fpath)))}</code>",
-            supports_streaming=True,
-            reply_to=reply_to_id,
-            parse_mode="html",
-        )
-        for _path in [_fpath, thumb_pic]:
-            os.remove(_path)
-    await zedevent.delete()
-
-@zedub.zed_cmd(
-    pattern="تحميل فيديو(?:\s|$)([\s\S]*)",
-    command=("تحميل فيديو", plugin_category),
-    info={
-        "header": "تحميـل مقـاطـع الفيـديــو مـن يوتيوب .. فيسبوك .. انستا .. الـخ عـبر الرابـط",
-        "مثــال": [
-            "{tr}تحميل فيديو بالــرد ع رابــط",
-            "{tr}تحميل فيديو + رابــط",
-        ],
-    },
-)
-async def download_video(event):
-    msg = event.pattern_match.group(1)
-    rmsg = await event.get_reply_message()
-    if not msg and rmsg:
-        msg = rmsg.text
-    urls = extractor.find_urls(msg)
-    if not urls:
-        return await edit_or_reply(event, "**- قـم بادخــال رابـط مع الامـر او بالــرد ع رابـط ليتـم التحميـل**")
-    zedevent = await edit_or_reply(event, "**⌔╎جـارِ التحميل انتظر قليلا ▬▭ ...**")
-    reply_to_id = await reply_id(event)
-    for url in urls:
-        ytdl_data = await ytdl_down(zedevent, video_opts, url)
-        if ytdl_down is None:
-            return
-        try:
-            f = pathlib.Path("zed_ytv.mp4")
-            print(f)
-            zedthumb = pathlib.Path("zed_ytv.jpg")
-            if not os.path.exists(zedthumb):
-                zedthumb = pathlib.Path("zed_ytv.webp")
-            if not os.path.exists(zedthumb):
-                zedthumb = None
-            await zedevent.edit(
-                f"**╮ ❐ جـارِ التحضيـر للـرفع انتظـر ...𓅫╰**:\
-                \n**{ytdl_data['title']}**"
-            )
-            ul = io.open(f, "rb")
-            c_time = time()
-            attributes, mime_type = await fix_attributes(
-                f, ytdl_data, supports_streaming=True
-            )
-            uploaded = await event.client.fast_upload_file(
-                file=ul,
-                progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(
-                        d, t, zedevent, c_time, "Upload :", file_name=ytdl_data["title"]
-                    )
-                ),
-            )
-            ul.close()
-            media = types.InputMediaUploadedDocument(
-                file=uploaded,
-                mime_type=mime_type,
-                attributes=attributes,
-            )
-            await event.client.send_file(
-                event.chat_id,
-                file=media,
-                reply_to=reply_to_id,
-                caption=f'**- المقطــع :** `{ytdl_data["title"]}`',
-                thumb=zedthumb,
-            )
-            os.remove(f)
-            if zedthumb:
-                os.remove(zedthumb)
-        except TypeError:
-            await asyncio.sleep(2)
-    await event.delete()
-"""
+        
