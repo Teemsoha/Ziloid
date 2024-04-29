@@ -20,7 +20,7 @@ games = {}
 aki_photo = "https://graph.org/file/b0ff07069e8637783fdae.jpg"
 
 
-@zedub.zed_cmd(pattern="اكينوتر(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="اكينوتر(?:\\s|$)([\\s\\S]*)")
 async def rozdo(e):
     sta = akinator.Akinator()
     games.update({e.chat_id: {e.id: sta}})
