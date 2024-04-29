@@ -177,7 +177,7 @@ async def title_vc(event):
 
 
 @zedub.zed_cmd(
-    pattern="(|الغاء )اسكت ([\s\S]*)",
+    pattern="(|الغاء )اسكت ([\\s\\S]*)",
     command=("اسكت", plugin_category),
     info={
         "header": "لـ كتم شخص في المكالمـه",
