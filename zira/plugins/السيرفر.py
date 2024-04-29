@@ -29,7 +29,7 @@ cmds = [
 
 
 @zedub.zed_cmd(
-    pattern="(ضع|جلب|حذف) الفار ([\s\S]*)",
+    pattern="(ضع|جلب|حذف) الفار ([\\s\\S]*)",
     command=("الفار", plugin_category),
     info={
         "header": "To manage config vars.",
