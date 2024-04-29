@@ -22,7 +22,7 @@ plugin_category = "العروض"
 
 
 @zedub.zed_cmd(
-    pattern="(سكرين|ss) ([\s\S]*)",
+    pattern="(سكرين|ss) ([\\s\\S]*)",
     command=("سكرين", plugin_category),
     info={
         "header": "لـ اخذ لقطـة شاشـه لـ المواقـع",
@@ -104,7 +104,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="لقطه ([\s\S]*)",
+    pattern="لقطه ([\\s\\S]*)",
     command=("لقطه", plugin_category),
     info={
         "header": "لـ اخذ لقطـة شاشـه لـ المواقـع",
