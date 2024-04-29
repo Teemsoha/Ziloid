@@ -17,7 +17,7 @@ async def hi(event):
     )
 
 
-@zedub.zed_cmd(pattern="تجربه(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="تجربه(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     cmd = "".join(event.message.message.split(maxsplit=1)[1:])
     if not cmd:
