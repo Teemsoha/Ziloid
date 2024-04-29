@@ -220,7 +220,7 @@ async def on_snip_list(event):
 
 
 @zedub.zed_cmd(
-    pattern="حذف رد ([\s\S]*)",
+    pattern="حذف رد ([\\s\\S]*)",
     command=("حذف رد", plugin_category),
     info={
         "header": "To delete that filter . so if user send that keyword bot will not reply",
@@ -331,7 +331,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="ترحيب(?:\s|$)([\s\S]*)",
+    pattern="ترحيب(?:\\s|$)([\\s\\S]*)",
     command=("ترحيب", plugin_category),
     info={
         "header": "To welcome new users in chat.",
@@ -533,7 +533,7 @@ async def _(event):  # sourcery no-metrics
 
 
 @zedub.zed_cmd(
-    pattern="رحب(?:\s|$)([\s\S]*)",
+    pattern="رحب(?:\\s|$)([\\s\\S]*)",
     command=("رحب", plugin_category),
     info={
         "header": "To welcome user(sends welcome message to here private messages).",
