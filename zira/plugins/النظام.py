@@ -149,7 +149,7 @@ def convert_from_bytes(size):
     return f"{round(size, 2)} {units[n]}"
 
 
-@zedub.zed_cmd(pattern="الانترنت(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="الانترنت(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     input_str = event.pattern_match.group(1)
     as_text = False
@@ -553,7 +553,7 @@ async def zeddd(event): # Code By T.me/zzzzl1l
 # ================================================================================================ #
 
 @zedub.zed_cmd(
-    pattern="الموقع ([\s\S]*)",
+    pattern="الموقع ([\\s\\S]*)",
     command=("الموقع", plugin_category),
     info={
         "header": "لـ اعطائـك خريـطـه للمـوقـع الـذي طلبتــه",
