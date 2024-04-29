@@ -45,7 +45,7 @@ plugin_category = "البوت"
 
 
 @zedub.zed_cmd(
-    pattern="يوت(?:\s|$)([\s\S]*)",
+    pattern="يوت(?:\\s|$)([\\s\\S]*)",
     command=("يوت", plugin_category),
     info={
         "header": "ytdl with inline buttons.",
@@ -89,7 +89,7 @@ async def iytdl_inline(event):
 
 @zedub.tgbot.on(
     CallbackQuery(
-        data=re.compile(b"^ytdl_download_(.*)_([\d]+|mkv|mp4|mp3)(?:_(a|v))?")
+        data=re.compile(b"^ytdl_download_(.*)_([\\d]+|mkv|mp4|mp3)(?:_(a|v))?")
     )
 )
 @check_owner
