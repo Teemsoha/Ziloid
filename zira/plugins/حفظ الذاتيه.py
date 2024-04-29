@@ -76,7 +76,7 @@ async def sddm(event):
         await zedub.send_file("me", pic, caption=f"[ᯓ 𝗦𝗼𝘂𝗿𝗰𝗲 𝗭𝗧𝗵𝗼𝗻 - حفـظ الذاتيـه 🧧](t.me/ZThon) .\n\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n**⌔╎مࢪحبـاً عـزيـزي المـالك 🫂\n⌔╎ تـم حفـظ الذاتيـة تلقائيـاً .. بنجـاح ☑️** ❝\n**⌔╎المـرسـل** {_format.mentionuser(sender.first_name , sender.id)} .")
 
 #Code For T.me/zzzzl1l
-@zedub.zed_cmd(pattern="اعلان (\d*) ([\s\S]*)")
+@zedub.zed_cmd(pattern="اعلان (\\d*) ([\\s\\S]*)")
 async def selfdestruct(destroy):
     zed = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = zed[1]
@@ -88,7 +88,7 @@ async def selfdestruct(destroy):
     await smsg.delete()
 
 #Code For T.me/zzzzl1l
-@zedub.zed_cmd(pattern="إعلان (\d*) ([\s\S]*)")
+@zedub.zed_cmd(pattern="إعلان (\\d*) ([\\s\\S]*)")
 async def selfdestruct(destroy):
     zed = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = zed[1]
