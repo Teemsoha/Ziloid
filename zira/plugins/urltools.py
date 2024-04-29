@@ -43,7 +43,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="اختصار(?:\s|$)([\s\S]*)",
+    pattern="اختصار(?:\\s|$)([\\s\\S]*)",
     command=("اختصار", plugin_category),
     info={
         "header": "To short the given url.",
@@ -79,7 +79,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="الغاء اختصار(?:\s|$)([\s\S]*)",
+    pattern="الغاء اختصار(?:\\s|$)([\\s\\S]*)",
     command=("unshort", plugin_category),
     info={
         "header": "To unshort the given dagb shorten url.",
@@ -121,7 +121,7 @@ async def _(event):
 
 # By Priyam Kalra
 @zedub.zed_cmd(
-    pattern="اخفاء(?:\s|$)([\s\S]*)",
+    pattern="اخفاء(?:\\s|$)([\\s\\S]*)",
     command=("hl", plugin_category),
     info={
         "header": "To hide the url with white spaces using hyperlink.",
