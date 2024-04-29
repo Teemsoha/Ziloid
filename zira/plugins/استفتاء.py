@@ -13,7 +13,7 @@ plugin_category = "البوت"
 
 
 @zedub.zed_cmd(
-    pattern="استفتاء(?:\s|$)([\s\S]*)",
+    pattern="استفتاء(?:\\s|$)([\\s\\S]*)",
     command=("استفتاء", plugin_category),
     info={
         "header": "To create a poll.",
