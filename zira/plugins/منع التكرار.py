@@ -52,7 +52,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="ضع التكرار(?:\s|$)([\s\S]*)",
+    pattern="ضع التكرار(?:\\s|$)([\\s\\S]*)",
     groups_only=True,
     require_admin=True,
 )
