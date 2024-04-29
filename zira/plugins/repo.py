@@ -35,7 +35,7 @@ REPO_NOT_FOUND = "<b>⎉╎عـذراً .. لـم استطـع ايجـاد ال
 
 
 #Write Code By T.me/zzzzl1l
-@zedub.zed_cmd(pattern="repo(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="repo(?:\\s|$)([\\s\\S]*)")
 async def zelzal2(event):
     zelzal = event.pattern_match.group(1)
     chat = "@GitHub_Download_robot"
