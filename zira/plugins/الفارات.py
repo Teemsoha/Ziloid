@@ -553,7 +553,7 @@ async def variable(event):
 
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
-@zedub.zed_cmd(pattern="حذف فار(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="حذف فار(?:\\s|$)([\\s\\S]*)")
 async def variable(event):
     input_str = event.text[9:]
     if (input_str == "من" or input_str == "الى" or input_str == "الترحيب") or "رسائلي" in input_str or "رسائله" in input_str:
@@ -856,7 +856,7 @@ async def variable(event):
 
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
-@zedub.zed_cmd(pattern="جلب فار(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="جلب فار(?:\\s|$)([\\s\\S]*)")
 async def custom_zed(event):
     input_str = event.text[9:]
     zed = await edit_or_reply(event, "**⎉╎جــاري جلـب معلـومـات الفــار 🛂. . .**")
@@ -1237,7 +1237,7 @@ async def custom_zed(event):
 
 
 # Copyright (C) 2022 Zed-Thon . All Rights Reserved
-@zedub.zed_cmd(pattern="وقت(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="وقت(?:\\s|$)([\\s\\S]*)")
 async def variable(event):
     if Config.HEROKU_API_KEY is None:
         return await ed(
