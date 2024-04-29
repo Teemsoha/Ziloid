@@ -95,7 +95,7 @@ async def stop_tagall(event):
     return await edit_or_reply(event, '**⎉╎تم إيقـاف التـاك .. بنجـاح ✓**')
 
 
-@zedub.zed_cmd(pattern="تاك(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="تاك(?:\\s|$)([\\s\\S]*)")
 async def tagall(event):
   global moment_worker
   if event.is_private:
@@ -159,7 +159,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="منشن(?:\s|$)([\s\S]*)",
+    pattern="منشن(?:\\s|$)([\\s\\S]*)",
     command=("منشن", plugin_category),
     info={
         "header": "لـ جـلب اسـم الشخـص بشكـل ماركـدون ⦇.منشن بالـرد او + معـرف/ايـدي الشخص⦈ ",
