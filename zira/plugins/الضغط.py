@@ -53,10 +53,10 @@ async def convert_video(video_file, output_directory, crf, total_time, bot, mess
         await asyncio.sleep(3)
         with open("./temp/progress.txt", "r+") as file:
             text = file.read()
-            frame = re.findall("frame=(\d+)", text)
-            time_in_us = re.findall("out_time_ms=(\d+)", text)
-            progress = re.findall("progress=(\w+)", text)
-            speed = re.findall("speed=(\d+\.?\d*)", text)
+            frame = re.findall("frame=(\\d+)", text)
+            time_in_us = re.findall("out_time_ms=(\\d+)", text)
+            progress = re.findall("progress=(\\w+)", text)
+            speed = re.findall("speed=(\\d+\\.?\\d*)", text)
             if len(frame):
                 frame = int(frame[-1])
             else:
@@ -129,7 +129,7 @@ async def cult_small_video(
 
 
 @zedub.zed_cmd(
-    pattern="(|ا)ضغط(?:\s|$)([\s\S]*)",
+    pattern="(|ا)ضغط(?:\\s|$)([\\s\\S]*)",
     command=("ضغط", plugin_category),
     info={
         "header": "Compress the video file.",
@@ -260,7 +260,7 @@ async def ffmpeg_compress(event):
 
 
 @zedub.zed_cmd(
-    pattern="ffmpegsave(?:\s|$)([\s\S]*)",
+    pattern="ffmpegsave(?:\\s|$)([\\s\\S]*)",
     command=("ffmpegsave", plugin_category),
     info={
         "header": "Saves the media file in bot to trim mutliple times",
@@ -317,7 +317,7 @@ async def ff_mpeg_trim_cmd(event):
 
 
 @zedub.zed_cmd(
-    pattern="vtrim(?:\s|$)([\s\S]*)",
+    pattern="vtrim(?:\\s|$)([\\s\\S]*)",
     command=("vtrim", plugin_category),
     info={
         "header": "Trims the saved media with specific given time internval and outputs as video if it is video",
@@ -403,7 +403,7 @@ async def ff_mpeg_trim_cmd(event):
 
 
 @zedub.zed_cmd(
-    pattern="atrim(?:\s|$)([\s\S]*)",
+    pattern="atrim(?:\\s|$)([\\s\\S]*)",
     command=("atrim", plugin_category),
     info={
         "header": "Trims the saved media with specific given time internval and outputs as audio",
