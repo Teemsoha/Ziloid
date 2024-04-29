@@ -52,7 +52,7 @@ async def writer(e):
 
 
 
-@zedub.zed_cmd(pattern="^\:/$")
+@zedub.zed_cmd(pattern="^\\:/$")
 async def kek(keks):
     keks = await edit_or_reply(keks, ":\\")
     uio = ["/", "\\"]
@@ -62,7 +62,7 @@ async def kek(keks):
         await keks.edit(txt)
 
 
-@zedub.zed_cmd(pattern="^\-_-$")
+@zedub.zed_cmd(pattern="^\\-_-$")
 async def lol(lel):
     lel = await edit_or_reply(lel, "-__-")
     okay = "-__-"
@@ -72,7 +72,7 @@ async def lol(lel):
         await lel.edit(okay)
 
 
-@zedub.zed_cmd(pattern="^\;_;$")
+@zedub.zed_cmd(pattern="^\\;_;$")
 async def fun(e):
     e = await edit_or_reply(e, ";__;")
     t = ";__;"
@@ -109,7 +109,7 @@ async def typewriter(typew):
         await asyncio.sleep(sleep_time)
 
 
-@zedub.zed_cmd(pattern="كرر (\d*) (.*)")
+@zedub.zed_cmd(pattern="كرر (\\d*) (.*)")
 async def _(event):
     if event.fwd_from:
         return
