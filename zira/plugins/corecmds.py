@@ -59,7 +59,7 @@ async def install(event):
 
 
 @zedub.zed_cmd(
-    pattern="حمل ([\s\S]*)",
+    pattern="حمل ([\\s\\S]*)",
     command=("حمل", plugin_category),
     info={
         "header": "لـ تحميـل اي ملف مجـدداً .. اذا كنت قد الغيت تحميله مسبقـاً",
@@ -88,7 +88,7 @@ async def load(event):
 
 
 @zedub.zed_cmd(
-    pattern="ارسل ([\s\S]*)",
+    pattern="ارسل ([\\s\\S]*)",
     command=("ارسل", plugin_category),
     info={
         "header": "لـ تحميـل وجلب اي ملف من ملفـات السـورس اليك ع تيليجـرام",
@@ -122,7 +122,7 @@ async def send(event):
 
 
 @zedub.zed_cmd(
-    pattern="الغاء حمل ([\s\S]*)",
+    pattern="الغاء حمل ([\\s\\S]*)",
     command=("حمل", plugin_category),
     info={
         "header": "لـ الغـاء تحميـل اي ملـف من السـورس.",
@@ -146,7 +146,7 @@ async def unload(event):
 
 
 @zedub.zed_cmd(
-    pattern="الغاء نصب ([\s\S]*)",
+    pattern="الغاء نصب ([\\s\\S]*)",
     command=("الغاء تنصيب", plugin_category),
     info={
         "header": "لـ الغـاء تنصيب اي ملـف من السـورس.",
@@ -187,7 +187,7 @@ async def unload(event):
 
 
 @zedub.zed_cmd(
-    pattern="الغاء تنصيب ([\s\S]*)",
+    pattern="الغاء تنصيب ([\\s\\S]*)",
     command=("الغاء تنصيب", plugin_category),
     info={
         "header": "لـ الغـاء تنصيب اي ملـف من السـورس.",
