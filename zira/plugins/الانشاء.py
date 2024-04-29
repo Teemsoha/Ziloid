@@ -9,7 +9,7 @@ plugin_category = "الادوات"
 
 
 @zedub.zed_cmd(
-    pattern="انشاء (كروب|خارق|قناه) ([\s\S]*)",
+    pattern="انشاء (كروب|خارق|قناه) ([\\s\\S]*)",
     command=("انشاء", plugin_category),
     info={
         "header": "لـ إنشـاء (كروب خارق/كروب/قناه) باستخـدام البـوت",
