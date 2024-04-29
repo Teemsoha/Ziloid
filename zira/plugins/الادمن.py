@@ -47,7 +47,7 @@ zel_dev = (5176749470, 5426390871, 6269975462, 1985225531)
 KTMZ = gvarstatus("Z_KTM") or "كتم"
 
 @zedub.zed_cmd(
-    pattern="ح عام(?:\s|$)([\s\S]*)",
+    pattern="ح عام(?:\\s|$)([\\s\\S]*)",
     command=("gban", plugin_category),
     info={
         "header": "To ban user in every group where you are admin.",
@@ -135,7 +135,7 @@ async def zedgban(event):  # sourcery no-metrics
 
 
 @zedub.zed_cmd(
-    pattern="الغاء ح عام(?:\s|$)([\s\S]*)",
+    pattern="الغاء ح عام(?:\\s|$)([\\s\\S]*)",
     command=("الغاء ح عام", plugin_category),
     info={
         "header": "To unban the person from every group where you are admin.",
@@ -236,7 +236,7 @@ async def gablist(event):
     await edit_or_reply(event, GBANNED_LIST)
 
 
-@zedub.zed_cmd(pattern=f"{KTMZ}(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern=f"{KTMZ}(?:\\s|$)([\\s\\S]*)")
 async def startgmute(event):
     if event.is_private:
         await asyncio.sleep(0.5)
@@ -296,7 +296,7 @@ async def startgmute(event):
             await reply.forward_to(BOTLOG_CHATID)
 
 
-@zedub.zed_cmd(pattern="الغاء كتم(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="الغاء كتم(?:\\s|$)([\\s\\S]*)")
 async def endgmute(event):
     if event.is_private:
         await asyncio.sleep(0.5)
@@ -361,7 +361,7 @@ async def watcher(event):
 
 
 @zedub.zed_cmd(
-    pattern="ط عام(?:\s|$)([\s\S]*)",
+    pattern="ط عام(?:\\s|$)([\\s\\S]*)",
     command=("ط عام", plugin_category),
     info={
         "header": "kicks the person in all groups where you are admin.",
@@ -586,7 +586,7 @@ async def set_group_photo(event):  # sourcery no-metrics
         )
 
 
-@zedub.zed_cmd(pattern=f"{ADMZ}(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern=f"{ADMZ}(?:\\s|$)([\\s\\S]*)")
 async def promote(event):
     chat = await event.get_chat()
     admin = chat.admin_rights
@@ -623,7 +623,7 @@ async def promote(event):
 
 
 
-@zedub.zed_cmd(pattern="رفع مالك(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="رفع مالك(?:\\s|$)([\\s\\S]*)")
 async def promote(event):
     chat = await event.get_chat()
     admin = chat.admin_rights
@@ -660,7 +660,7 @@ async def promote(event):
         )
 
 
-@zedub.zed_cmd(pattern="اخفاء(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="اخفاء(?:\\s|$)([\\s\\S]*)")
 async def promote(event):
     chat = await event.get_chat()
     admin = chat.admin_rights
@@ -698,7 +698,7 @@ async def promote(event):
         )
 
 
-@zedub.zed_cmd(pattern=f"{UNADMZ}(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern=f"{UNADMZ}(?:\\s|$)([\\s\\S]*)")
 async def demote(event):
     chat = await event.get_chat()
     admin = chat.admin_rights
@@ -733,7 +733,7 @@ async def demote(event):
         )
 
 
-@zedub.zed_cmd(pattern=f"{BANN}(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern=f"{BANN}(?:\\s|$)([\\s\\S]*)")
 async def _ban_person(event):
     user, reason = await get_user_from_event(event)
     if reason and reason == "عام":
@@ -786,7 +786,7 @@ async def _ban_person(event):
             )
 
 
-@zedub.zed_cmd(pattern=f"{UNBANN}(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern=f"{UNBANN}(?:\\s|$)([\\s\\S]*)")
 async def nothanos(event):
     user, _ = await get_user_from_event(event)
     if not user:
@@ -819,7 +819,7 @@ async def watcher(event):
             LOGS.info(str(e))
 
 
-@zedub.zed_cmd(pattern=f"{KICK}(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern=f"{KICK}(?:\\s|$)([\\s\\S]*)")
 async def kick(event):
     user, reason = await get_user_from_event(event)
     if not user:
@@ -938,7 +938,7 @@ async def unpin(event):
 
 
 @zedub.zed_cmd(
-    pattern="الاحداث( م)?(?: |$)(\d*)?",
+    pattern="الاحداث( م)?(?: |$)(\\d*)?",
     command=("الاحداث", plugin_category),
     info={
         "header": "لـ جـلب آخـر الرسـائـل المحـذوفـه مـن الاحـداث بـ العـدد",
