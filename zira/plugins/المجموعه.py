@@ -451,7 +451,7 @@ async def admem(event):
 
 
 @zedub.zed_cmd(
-    pattern="المشرفين(?:\s|$)([\s\S]*)",
+    pattern="المشرفين(?:\\s|$)([\\s\\S]*)",
     command=("المشرفين", plugin_category),
     info={
         "header": "To get list of admins.",
@@ -505,7 +505,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="الاعضاء(?:\s|$)([\s\S]*)",
+    pattern="الاعضاء(?:\\s|$)([\\s\\S]*)",
     command=("الاعضاء", plugin_category),
     info={
         "header": "To get list of users.",
@@ -553,7 +553,7 @@ async def get_users(show):
 
 
 @zedub.zed_cmd(
-    pattern="المعلومات(?:\s|$)([\s\S]*)",
+    pattern="المعلومات(?:\\s|$)([\\s\\S]*)",
     command=("المعلومات", plugin_category),
     info={
         "header": "To get Group details.",
@@ -836,7 +836,7 @@ async def fetch_info(chat, event):  # sourcery no-metrics
 
 
 @zedub.zed_cmd(
-    pattern="اكسباير ?([\s\S]*)",
+    pattern="اكسباير ?([\\s\\S]*)",
     command=("اكسباير", plugin_category),
     info={
         "header": "To get breif summary of members in the group",
@@ -1046,7 +1046,7 @@ async def _(event):
                 pass
     await zedevent.edit(f"**⎉╎تـم مسـح المحـظورين مـن أصـل 🆘 :**{succ}/{total} \n اسـم المجـموعـة 📄 : {chat.title}")
 
-@zedub.zed_cmd(pattern=r"المحذوفين ?([\s\S]*)")
+@zedub.zed_cmd(pattern=r"المحذوفين ?([\\s\\S]*)")
 async def rm_deletedacc(show):
     con = show.pattern_match.group(1).lower()
     del_u = 0
