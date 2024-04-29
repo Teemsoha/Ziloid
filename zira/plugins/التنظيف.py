@@ -44,7 +44,7 @@ purgetype = {
 
 
 @zedub.zed_cmd(
-    pattern="مسح(\s*| \d+)$",
+    pattern="مسح(\s*| \\d+)$",
     command=("del", plugin_category),
     info={
         "header": "لـ حذف رسـاله بالـرد",
@@ -91,7 +91,7 @@ async def delete_it(event):
 
 
 @zedub.zed_cmd(
-    pattern=".مسح(\s*| \d+)$",
+    pattern=".مسح(\s*| \\d+)$",
     command=("del", plugin_category),
     info={
         "header": "لـ حذف رسـاله بالـرد",
@@ -224,7 +224,7 @@ async def purgeme(event):
 
 # TODO: only sticker messages.
 @zedub.zed_cmd(
-    pattern="تنظيف(?:\s|$)([\s\S]*)",
+    pattern="تنظيف(?:\\s|$)([\\s\\S]*)",
     command=("تنظيف", plugin_category),
     info={
         "header": "To purge messages from the replied message.",
