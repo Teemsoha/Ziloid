@@ -38,7 +38,7 @@ async def kakashi(event):
 
 
 @zedub.zed_cmd(
-    pattern="device(?: |$)(\S*)",
+    pattern="device(?: |$)([\\s\\S]*)",
     command=("device", plugin_category),
     info={
         "header": "To get android device name/model from its codename",
@@ -75,7 +75,7 @@ async def device_info(event):
 
 
 @zedub.zed_cmd(
-    pattern="codename(?: |)([\S]*)(?: |)([\s\S]*)",
+    pattern="codename(?: |)([\\s\\S]*)(?: |)([\\s\\S]*)",
     command=("codename", plugin_category),
     info={
         "header": "To Search for android device codename",
@@ -126,7 +126,7 @@ async def codename_info(event):
 
 
 @zedub.zed_cmd(
-    pattern="twrp(?: |$)(\S*)",
+    pattern="twrp(?: |$)([\\s\\S]*)",
     command=("twrp", plugin_category),
     info={
         "header": "To Get latest twrp download links for android device.",
