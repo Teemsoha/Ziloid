@@ -35,7 +35,7 @@ async def on_new_message(event):
 
 
 @zedub.zed_cmd(
-    pattern="منع(?:\s|$)([\s\S]*)",
+    pattern="منع(?:\\s|$)([\\s\\S]*)",
     require_admin=True,
 )
 async def _(event):
@@ -53,7 +53,7 @@ async def _(event):
 
 
 @zedub.zed_cmd(
-    pattern="الغاء منع(?:\s|$)([\s\S]*)",
+    pattern="الغاء منع(?:\\s|$)([\\s\\S]*)",
     require_admin=True,
 )
 async def _(event):
@@ -103,7 +103,7 @@ async def _(event):
 # =========================================التحذيرات================================================= #
 # ================================================================================================ #
 
-@zedub.zed_cmd(pattern="تحذير(?:\s|$)([\s\S]*)")
+@zedub.zed_cmd(pattern="تحذير(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     warn_reason = event.pattern_match.group(1)
     if not warn_reason:
