@@ -282,7 +282,7 @@ async def add_to_pack(
 
 
 @zedub.zed_cmd(
-    pattern="ملصق(?:\s|$)([\s\S]*)",
+    pattern="ملصق(?:\\s|$)([\\s\\S]*)",
     command=("ملصق", plugin_category),
     info={
         "header": "لـ صنـع ملصـق ووضعــه بـ حزمـة ملصقـات بحقـوقـك",
@@ -472,7 +472,7 @@ async def kang(args):  # sourcery no-metrics
 
 
 @zedub.zed_cmd(
-    pattern="حزمه(?:\s|$)([\s\S]*)",
+    pattern="حزمه(?:\\s|$)([\\s\\S]*)",
     command=("حزمه", plugin_category),
     info={
         "header": "To kang entire sticker sticker.",
@@ -737,7 +737,7 @@ async def pussycat(args):
 
 
 @zedub.zed_cmd(
-    pattern="حزمة(?:\s|$)([\s\S]*)",
+    pattern="حزمة(?:\\s|$)([\\s\\S]*)",
     command=("حزمة", plugin_category),
     info={
         "header": "To split the replied image and make sticker pack.",
@@ -902,7 +902,7 @@ async def get_pack_info(event):
     await zedevent.edit(OUTPUT)
 
 
-@zedub.zed_cmd(pattern="ملصقات ?([\s\S]*)")
+@zedub.zed_cmd(pattern="ملصقات ?([\\s\\S]*)")
 async def cb_sticker(event):
     split = event.pattern_match.group(1) #Code by T.me/zzzzl1l
     if "sex" in split or "pussy" in split or "rape" in split or "fuk" in split or "عير" in split or "كس " in split or "penis" in split or "كحب" in split or "قحب" in split or "كحاب" in split:
