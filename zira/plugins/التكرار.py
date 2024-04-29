@@ -138,7 +138,7 @@ async def spam_function(event, sandy, zed, sleeptimem, sleeptimet, DelaySpam=Fal
 
 
 @zedub.zed_cmd(
-    pattern="كرر ([\s\S]*)",
+    pattern="كرر ([\\s\\S]*)",
     command=("كرر", plugin_category),
     info={
         "header": "لـ تكـرار كلمـه معينـه لعـدد معيـن من المـرات",
@@ -243,7 +243,7 @@ async def stickerpack_spam(event):
 
 
 @zedub.zed_cmd(
-    pattern="وسبام ([\s\S]*)",
+    pattern="وسبام ([\\s\\S]*)",
     command=("وسبام", plugin_category),
     info={
         "header": "تكـرار الكلمـه حـرف حـرف",
@@ -277,7 +277,7 @@ async def tmeme(event):
 
 
 @zedub.zed_cmd(
-    pattern="سبام ([\s\S]*)",
+    pattern="سبام ([\\s\\S]*)",
     command=("سبام", plugin_category),
     info={
         "header": "تكرار كلمـة او جملـة نصيـه",
@@ -310,7 +310,7 @@ async def tmeme(event):
             )
 
 
-@zedub.zed_cmd(pattern=f"{SPAM} ([\s\S]*)")
+@zedub.zed_cmd(pattern=f"{SPAM} ([\\s\\S]*)")
 async def spammer(event):
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
