@@ -30,7 +30,7 @@ HEROKU_API_KEY = Config.HEROKU_API_KEY
 
 
 @zedub.zed_cmd(
-    pattern="(set|get|del) var ([\s\S]*)",
+    pattern="(set|get|del) var ([\\s\\S]*)",
     command=("var", plugin_category),
     info={
         "header": "To manage heroku vars.",
@@ -117,7 +117,7 @@ async def variable(var):  # sourcery no-metrics
 
 
 @zedub.zed_cmd(
-    pattern="(ضع|جلب|حذف) فار ([\s\S]*)",
+    pattern="(ضع|جلب|حذف) فار ([\\s\\S]*)",
     command=("var", plugin_category),
     info={
         "header": "لـ اضـافـة وتغييـر فـارات هيـروكـو لحســابك",
